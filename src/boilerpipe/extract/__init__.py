@@ -9,8 +9,8 @@ lock = threading.Lock()
 
 InputSource        = jpype.JClass('org.xml.sax.InputSource')
 StringReader       = jpype.JClass('java.io.StringReader')
-HTMLHighlighter    = jpype.JClass('de.l3s.boilerpipe.sax.HTMLHighlighter')
-BoilerpipeSAXInput = jpype.JClass('de.l3s.boilerpipe.sax.BoilerpipeSAXInput')
+HTMLHighlighter    = jpype.JClass('com.kohlschutter.boilerpipe.sax.HTMLHighlighter')
+BoilerpipeSAXInput = jpype.JClass('com.kohlschutter.boilerpipe.sax.BoilerpipeSAXInput')
 
 class Extractor(object):
     """
@@ -62,7 +62,7 @@ class Extractor(object):
             lock.acquire()
 
             self.extractor = jpype.JClass(
-                "de.l3s.boilerpipe.extractors."+extractor).INSTANCE
+                "com.kohlschutter.boilerpipe.extractors."+extractor).INSTANCE
         finally:
             lock.release()
 
@@ -79,7 +79,7 @@ class Extractor(object):
 
     def getImages(self):
         extractor = jpype.JClass(
-            "de.l3s.boilerpipe.sax.ImageExtractor").INSTANCE
+            "com.kohlschutter.boilerpipe.sax.ImageExtractor").INSTANCE
         images = extractor.process(self.source, self.data)
         jpype.java.util.Collections.sort(images)
         images = [
