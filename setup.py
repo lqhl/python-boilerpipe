@@ -9,13 +9,13 @@ except:
     from urllib.request import urlretrieve
 
 __version__ = '1.2.0.0'
-boilerpipe_version = '1.2.0'
+boilerpipe_version = '1.2.1'
 DATAPATH = join(abspath(dirname((__file__))), 'src/boilerpipe/data')
 
 
 
 def download_jars(datapath, version=boilerpipe_version):
-    tgz_url = 'https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/boilerpipe/boilerpipe-{0}-bin.tar.gz'.format(version)
+    tgz_url = 'https://github.com/lqhl/boilerpipe/releases/download/v1.2.1/boilerpipe-{}-bin.tar.gz'.format(version)
     tgz_name = basename(tgz_url)
     if not exists(tgz_name):
         urlretrieve(tgz_url, tgz_name)
